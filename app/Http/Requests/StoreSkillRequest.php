@@ -36,4 +36,3 @@ class StoreSkillRequest extends FormRequest
         ];
     }
 }
-            // Il campo description è univoco quindi se vado a modificare solo il nome dell'oggetto non mi consente la modifica in quanto description è gia presente all'interno.
