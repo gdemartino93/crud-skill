@@ -18,7 +18,7 @@ class SkillResource extends JsonResource
             // qui possiamo personalizzare l'oggetto creando delle nostre chiavi
             'id' => $this->id,
             'nome' => $this->name,
-            'livello_skill' => $this->descrizione,
+            'livello_skill' => $this->description,
             'Creato' => $this->created_at,
         ];
     }
