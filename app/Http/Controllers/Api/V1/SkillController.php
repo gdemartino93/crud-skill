@@ -11,10 +11,14 @@ use Illuminate\Http\Request;
 class SkillController extends Controller
 {
     public function index(){
-        // tra le parentesi indichiamo quanti oggetti vogliamo ritornati in una pagina
-        $skills = Skill::paginate(1);
+        // riceviamo gli oggetti in formato personalizzato come da SkillResource
+        $skills = SkillResource::collection(Skill::paginate(1));
+        // ritorniamo gli oggetti in formato standard json
+
+        // $skills = Skill::paginate(1);
+        
         return response() -> json([
-            'data' => $skills,
+            'results' => $skills,
         ]);
     }
 
