@@ -22,16 +22,18 @@ class StoreSkillRequest extends FormRequest
      */
     public function rules(): array
     {
-        // mi prendo l'id dell'oggetto per consentire dopo l'ignore sull' univoque
-        $skillId = $this->route('skill')->id;
         return [
-            'name' => ['required', 'min:3','max:32'],
-
-            // Il campo description è univoco quindi se vado a modificare solo il nome dell'oggetto non mi consente la modifica in quanto description è gia presente all'interno.
-            'description' => [
+            'name' => [
                 'required',
-                Rule::unique('skills','description') -> ignore($skillId)
+                'min:3',
+                'max:32'
+            ],
+            'description' => 
+            [
+                'required',
+                Rule :: unique('skills','description') -> ignore($this->skill)
             ]
         ];
     }
 }
+            // Il campo description è univoco quindi se vado a modificare solo il nome dell'oggetto non mi consente la modifica in quanto description è gia presente all'interno.
