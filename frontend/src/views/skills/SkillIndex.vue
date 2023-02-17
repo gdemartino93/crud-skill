@@ -11,7 +11,29 @@
 
   </template>
   
-  <script>
+<script setup>
+  import { ref } from 'vue';
+  import axios from 'axios';
+
+  const url = "http://127.0.0.1:8000/api/v1/skills/";
+
+  const skills = ref([]);
+
+  const getData = () =>{
+    axios.get(url)
+        .then(res => {
+            skills.value = res.data.results;
+        })
+        .catch(err => console.log(err))
+  }
+  getData();
+  console.log(skills)
+
+</script>
+<style lang="scss" scoped>
+
+</style>
+  <!-- <script>
   import { ref } from 'vue';
   import axios from 'axios';
   
@@ -43,5 +65,5 @@
   
   <style lang="scss" scoped>
 
-  </style>
+  </style> -->
   
