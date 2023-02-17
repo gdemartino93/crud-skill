@@ -12,11 +12,11 @@ class SkillController extends Controller
 {
     public function index(){
         // riceviamo gli oggetti in formato personalizzato come da SkillResource
-        $skills = SkillResource::collection(Skill::paginate(1));
+        $skills = SkillResource::collection(Skill::all());
         // ritorniamo gli oggetti in formato standard json
 
         // $skills = Skill::paginate(1);
-        
+
         return response() -> json([
             'results' => $skills,
         ]);
@@ -32,5 +32,9 @@ class SkillController extends Controller
     public function update(StoreSkillRequest $request , Skill $skill){
         $skill -> update($request -> validated());
         return response() ->json("Skill Updated");
+    }
+    public function destroy(Skill $skill){
+        $skill -> delete();
+        return response() -> json('Skill deleted');
     }
 }
