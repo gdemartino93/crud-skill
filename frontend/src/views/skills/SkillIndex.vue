@@ -27,13 +27,14 @@
         })
         .catch(err => console.log(err))
   }
-  const getSkill = (id) =>{
-    // console.log(id)
-    axios.get(url + id)
-        .then(res =>{
-          skill.value = res.data.results
-        })
-        .catch(err => console.log(err))
+  // chiamta asincrona
+  const getSkill = async(id) =>{
+    try{
+      const res = await axios.get(url + id);
+      skill.value = res.data.results;
+    }catch(err){
+      console.log(err)
+    }
   }
   
   getSkills();
