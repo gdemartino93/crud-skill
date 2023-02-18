@@ -13,10 +13,11 @@ onMounted(()=>{
     if (CHAT.classList.contains('d-block')){
       CHAT.className = 'd-none'
       document.title = "Portfolio"
+      CREATEAUDIO.play();
     }else{
       CHAT.className = 'd-block'
       document.title = "Invia messaggio"
-      CREATEAUDIO.load();
+      // CREATEAUDIO.load();
       CREATEAUDIO.play();
     };
   }
@@ -30,19 +31,15 @@ onMounted(()=>{
   }
     // FORM PER LA CHAT A COMPARSA FINE
 
-    // esegui audio quando apri la chat
+    // crea tag audio ed esegui audio quando apri la chat
     const CREATEAUDIO = document.createElement('audio');
     CREATEAUDIO.setAttribute('id', 'audio');
     CREATEAUDIO.setAttribute('src','https://www.zapsplat.com/wp-content/uploads/2015/sound-effects-84577/zapsplat_multimedia_button_click_bright_003_92100.mp3')
-
-
 })
-
 </script>
 
 <template>
   <header class="d-flex align-items-center justify-content-center ">
-
       <nav class="d-flex justify-content-center align-items-center gap-5">
         <RouterLink to="/" class="bg-black bg-gradient fw-bold text-white p-3 rounded-pill" >
           <span id="home">Home</span>
@@ -61,17 +58,21 @@ onMounted(()=>{
     <div class="header-chat">
       <span id="closeChat">X</span>
     </div>
-    <div class="body-chat p-2 d-flex flex-column">
-      <label for="email">Inserisci la tua email:</label>
-      <input type="text">
-      <label for="object">Inserisci l'oggetto del messaggio:</label>
-      <input type="text">
-      <label for="text">Scrivi il messaggio:</label>
-      <input type="text" id="areaTesto">
+    <div >
+        <form action="" class="body-chat p-2 d-flex flex-column">
+          <label for="email">Inserisci la tua email:</label>
+          <input type="text">
+          <label for="object">Inserisci l'oggetto del messaggio:</label>
+          <input type="text">
+          <label for="text">Scrivi il messaggio:</label>
+          <input type="text" id="areaTesto">
+          <div class="body-cmd d-flex justify-content-end">
+            <button class="btn btn-success" id="sendMsg" type="submit">Invia</button>
+          </div>
+      </form>
+      
     </div>
-    <div class="body-cmd d-flex justify-content-end">
-      <button class="btn btn-success">Invia</button>
-    </div>
+
   </section>
   <RouterView />
 </template>
