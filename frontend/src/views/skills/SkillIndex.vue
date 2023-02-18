@@ -1,6 +1,6 @@
 <template>
     <div class="container d-flex justify-content-center gap-5 m-5">
-        <div v-for="skill in skills" class="card" style="width: 18rem;">
+        <div v-for="(skill,index) in skills" @click="getSkill(skill.id)" :key=index class="card" style="width: 18rem;">
             <div class="card-body">
                 <h5 class="card-title text-black fw-bold">{{ skill.nome }}</h5>
                 <h6 class="card-subtitle mb-2 text-muted">{{ skill.livello_skill }}</h6>
@@ -18,16 +18,26 @@
   const url = "http://127.0.0.1:8000/api/v1/skills/";
 
   const skills = ref([]);
+  const skill = ref([]);
 
-  const getData = () =>{
+  const getSkills = () =>{
     axios.get(url)
         .then(res => {
             skills.value = res.data.results;
         })
         .catch(err => console.log(err))
   }
-  getData();
-  console.log(skills)
+  const getSkill = (id) =>{
+    // console.log(id)
+    axios.get(url + id)
+        .then(res =>{
+          skill.value = res.data.results
+        })
+        .catch(err => console.log(err))
+  }
+  
+  getSkills();
+  console.log(skill)
 
 </script>
 <style lang="scss" scoped>
