@@ -1,7 +1,8 @@
 <template>
     <div class="container col-12 d-flex flex-column flex-md-row flex-lg-row gap-md-3 gap-lg-5 justify-content-center flex-wrap">
         <div v-for="(skill,index) in skills" @click="getSkill(skill.id)" :key=skill.id class="card col-12 col-md-6 col-lg-3 my-3">
-            <div class="card-body ">
+            <div class="card-body position-relative ">
+                <span id="deleteBtn" @click="deleteSkill(skill.id)" class="p-2 fw-bold position-absolute top-0 end-0" style="color: black;">X</span>
                 <h5 class="card-title text-black fw-bold">{{ skill.nome }}</h5>
                 <h6 class="card-subtitle mb-2 text-muted">{{ skill.livello_skill }}</h6>
                 <a href="#" class="card-link">Card link</a>
@@ -13,7 +14,7 @@
   
 <script setup>
   import { ref , onMounted } from 'vue';
-  import axios from 'axios';
+  import axios, { Axios } from 'axios';
   import store from '../../store';
 
   // const url = "http://127.0.0.1:8000/api/v1/skills/";
@@ -34,48 +35,28 @@
     try{
       const res = await axios.get(store.url + id );
       skill.value = res.data.results;
+      console.log(id);
     }catch(err){
       console.log(err)
     }
   }
+  const deleteSkill = async(id) =>{
+    if(!window.confirm('Are you sure?')){
+      return
+    }
+    await axios.delete(store.url + id);
+    await getSkills();
+
+  }
   
-  getSkills();
+  onMounted:{
+    getSkills();
+  }
+
 
 </script>
 <style lang="scss" scoped>
-
+#deleteBtn{
+  cursor: pointer;
+}
 </style>
-  <!-- <script>
-  import { ref } from 'vue';
-  import axios from 'axios';
-  
-  const url = "http://127.0.0.1:8000/api/v1/skills/";
-  
-  export default {
-    data(){
-        return{
-            skills : [],
-        }
-    },
-    methods : {
-        fetchSkill (){
-            axios.get(url)
-                .then(res => {
-                        this.skills = res.data.results;
-                        console.log(this.skills);
-                    })
-                .catch(error => {
-                        console.log(error);
-                });
-        }
-    },
-    mounted() {
-      this.fetchSkill()
-    }
-  }
-  </script>
-  
-  <style lang="scss" scoped>
-
-  </style> -->
-  
