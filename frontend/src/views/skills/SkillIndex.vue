@@ -1,6 +1,6 @@
 <template>
-    <div class="container d-flex flex-column flex-md-column col-md-12 flex-lg-row gap-md-3 gap-lg-5 justify-content-center flex-wrap">
-        <div v-for="(skill,index) in skills" @click="getSkill(skill.id)" :key=skill.id class="card col-12 col-8-md col-5-lg my-3" style="width: 18rem;">
+    <div class="container col-12 d-flex flex-column flex-md-row flex-lg-row gap-md-3 gap-lg-5 justify-content-center flex-wrap">
+        <div v-for="(skill,index) in skills" @click="getSkill(skill.id)" :key=skill.id class="card col-12 col-md-6 col-lg-3 my-3">
             <div class="card-body ">
                 <h5 class="card-title text-black fw-bold">{{ skill.nome }}</h5>
                 <h6 class="card-subtitle mb-2 text-muted">{{ skill.livello_skill }}</h6>
