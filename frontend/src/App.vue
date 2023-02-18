@@ -65,7 +65,7 @@ onMounted(()=>{
           <label for="object">Inserisci l'oggetto del messaggio:</label>
           <input type="text">
           <label for="text">Scrivi il messaggio:</label>
-          <input type="text" id="areaTesto">
+          <textarea type="text" id="areaTesto" cols="40"  rows="5" class="p-1"></textarea>
           <div class="body-cmd d-flex justify-content-end">
             <button class="btn btn-success" id="sendMsg" type="submit">Invia</button>
           </div>
