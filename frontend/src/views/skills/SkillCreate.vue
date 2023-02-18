@@ -8,6 +8,7 @@
         <div class="mb-3">
             <label for="description" class="form-label">Description:</label>
             <input v-model="form.description" type="text" class="form-control" id="description" placeholder="name@example.com">
+
         </div>
         <button type="submit" class="btn btn-success">Invia</button>
     </form>

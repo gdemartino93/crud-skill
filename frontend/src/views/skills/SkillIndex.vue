@@ -1,6 +1,6 @@
 <template>
     <div class="container col-12 d-flex flex-column flex-md-row flex-lg-row gap-md-3 gap-lg-5 justify-content-center flex-wrap">
-        <div v-for="(skill,index) in skills" @click="getSkill(skill.id)" :key=skill.id class="card col-12 col-md-6 col-lg-3 my-3">
+        <div v-for="(skill,index) in skills" :key=skill.id class="card col-12 col-md-6 col-lg-3 my-3">
             <div class="card-body position-relative ">
               <div class="d-flex justify-content-end align-items-center">
                 <span id="deleteBtn" @click="deleteSkill(skill.id)" class="p-2 fw-bold" style="color: black;">X</span>
@@ -18,7 +18,7 @@
 <script setup>
   import { onMounted } from 'vue';
   import useSkills from '../../composable/skills';
-  const {skills , getSkills , deleteSkill, getSkill} = useSkills();
+  const {skills , getSkills , deleteSkill} = useSkills();
 
 
   onMounted(()=>{

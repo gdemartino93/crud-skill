@@ -2,6 +2,7 @@
 
 namespace App\Http\Resources\V1;
 
+use App\Models\Skill;
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
 
@@ -22,4 +23,8 @@ class SkillResource extends JsonResource
             'Creato' => $this->created_at,
         ];
     }
+
+    // public function show(Skill $skill){
+    //     return new SkillResource($skill);
+    // }
 }

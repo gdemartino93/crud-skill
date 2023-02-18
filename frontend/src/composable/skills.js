@@ -3,6 +3,7 @@ import axios from "axios";
 import { useRouter } from "vue-router";
 import store from '../store';
 
+axios.defaults.baseURL = "http://127.0.0.1:8000/api/v1/";
 
 export default function useSkills(){
     
@@ -10,7 +11,7 @@ export default function useSkills(){
     const skill = ref([]);  
     const router = useRouter();  
     
-    axios.defaults.baseURL = "http://127.0.0.1:8000/api/v1/"
+    
     const getSkills = () =>{
         axios.get('skills')
             .then(res => {
@@ -43,7 +44,7 @@ export default function useSkills(){
         await axios.delete('skills/' + id);
         await getSkills();
       }
-      const editSkill = async(id) => {
+      const editSkill = async (id) => {
         try{
             await axios.put('skills/' + id, skill.value);
             await router.push({name:'SkillIndex'})
