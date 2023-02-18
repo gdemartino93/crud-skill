@@ -14,15 +14,16 @@
 <script setup>
   import { ref , onMounted } from 'vue';
   import axios from 'axios';
+  import store from '../../store';
 
   // const url = "http://127.0.0.1:8000/api/v1/skills/";
 
-  axios.defaults.baseURL = "http://127.0.0.1:8000/api/v1"
+  // axios.defaults.baseURL = "http://127.0.0.1:8000/api/v1"
   const skills = ref([]);
   const skill = ref([]);
 
   const getSkills = () =>{
-    axios.get('skills')
+    axios.get(store.url)
         .then(res => {
             skills.value = res.data.results;
         })
@@ -31,7 +32,7 @@
   // chiamta asincrona
   const getSkill = async(id) =>{
     try{
-      const res = await axios.get('skills/' + id );
+      const res = await axios.get(store.url + id );
       skill.value = res.data.results;
     }catch(err){
       console.log(err)
