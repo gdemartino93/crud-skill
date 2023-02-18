@@ -39,13 +39,16 @@ onMounted(()=>{
 </script>
 
 <template>
-  <header class="d-flex align-items-center justify-content-center ">
-      <nav class="d-flex justify-content-center align-items-center gap-5">
+  <header class="d-flex align-items-center justify-content-center my-5 ">
+      <nav class="d-flex justify-content-center align-items-center flex-column flex-md-row flex-lg-row gap-lg-5 gap-md-4 gap-2">
         <RouterLink to="/" class="bg-black bg-gradient fw-bold text-white p-3 rounded-pill" >
           <span id="home">Home</span>
         </RouterLink>
         <RouterLink to="/skills" class="bg-black bg-gradient fw-bold text-white p-3 rounded-pill">
           <span id="home-btn">Skills</span>
+        </RouterLink>
+        <RouterLink :to="{ name : 'SkillCreate' }" class="bg-black bg-gradient fw-bold text-white p-3 rounded-pill">
+          <span>Add new Skill</span>
         </RouterLink>
         <RouterLink to="" class="bg-black bg-gradient fw-bold text-white p-3 rounded-pill">
           <span id="chatBtn">Contact me</span>
